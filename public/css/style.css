@@ -1,0 +1,88 @@
+html{
+	height: 100%;
+}
+
+body{
+	position: relative;
+	min-height: 100%;
+	padding-bottom: 5rem;
+}
+
+/*override css
+*/
+.bg-light {
+    background-color: #02aadd!important;
+}
+
+/*admin product images 
+*/
+.thumb-image{
+	width: 150px;
+	height: 100px;
+	border: 1px solid;
+}
+
+/*Sub Category*/
+.child-rows {
+    padding-left: 20px;
+    border-left: 1px solid #dfdfdf;
+    background: #fff;
+}
+
+.child-rows a.list-group-item{
+	border-left: 0px!important;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+
+/*payment hidden*/
+.hidden {
+    display: none;
+}
+
+/*Navbar CSS*/
+.mr-auto, .mx-auto {
+    margin-top: 12px;
+    margin-bottom: -7px;
+}
+
+/*slider product css
+*/
+.product-item{
+	background: #7f97dc;
+}
+
+/*user login*/
+.margin{
+	margin-top: 15px;
+}
+
+/*User dashboard*/
+.hover{
+    background-color: #000;
+}
+
+.margin-top-20{
+	margin-top: 20px;
+}
+
+.feature-image{
+	max-height: 200px;
+}
+
+.footer-bottom{
+	padding: 20px;
+	margin-top: 20px;
+	background: #02aadd;
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom:0;
+}
+

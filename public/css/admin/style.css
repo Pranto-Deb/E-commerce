@@ -1,0 +1,8 @@
+/*CSS for login Page*/
+body{
+	background-color: #0d3c44;
+}
+
+.form-control{
+	display: block;
+}
