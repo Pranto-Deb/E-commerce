@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Product;
+use App\Models\Slider;
 
 class PagesController extends Controller
 {
     public function index(){
-    	$products = Product::orderBy('id', 'desc')->paginate(9);
-    	return view('frontend.pages.index', compact('products'));
+    	$sliders = Slider::orderBy('id', 'asc')->get();
+        $products = Product::orderBy('id', 'desc')->paginate(9);
+    	return view('frontend.pages.index', compact('products', 'sliders'));
     }
     
     public function contact(){

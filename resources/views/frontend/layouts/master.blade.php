@@ -4,9 +4,8 @@
 	<title>
 		@yield('title', 'Laravel Ecommerce Project')
 	</title>
-	
-  @include('frontend.partials.styles')
-
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+  	@include('frontend.partials.styles')
 </head>
 <body>
 
@@ -22,9 +21,9 @@
 		<!-- footer -->
 	 @include('frontend.partials.footer')
   <!--     end-footer -->	
-</div>
+	</div>
 	
-  @include('frontend.partials.scripts')
-  @yield('scripts')
+  	@include('frontend.partials.scripts')
+  	@yield('scripts')
 </body>
 </html>

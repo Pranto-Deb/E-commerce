@@ -66,10 +66,10 @@
 			 </tr>
 			 @foreach($sliders as $slider)
 			 <tr>
-			 <td>#</td>
+			 <td>{{ $loop->index+1 }}</td>
 			 <td>{{$slider->title}}</td>
 			 <td>
-			 	<img src="{{ asset('images/sliders/'.$slider->image) }}" width="40">
+			 	<img src="{{ asset('images/sliders/'.$slider->image) }}" width="40" style="border-radius: inherit;">
 			 </td>
 			 <td>{{$slider->priority}}</td>
 			 <td>
@@ -99,7 +99,7 @@
           				Previous Image
           			</a>
           			<small class="text-danger">(required)</small></label>
-          		<input type="file" style="display: block" class="form-control" name="image" id="image" placeholder="Slider Image" required>
+          		<input type="file" style="display: block" class="form-control" name="image" id="image" placeholder="Slider Image">
           		</div>
           		<div class="form-group">
           		<label for="button-text">Slider Button Text<small class="text-info">(optional)</small></label>
@@ -120,6 +120,7 @@
 				</div>
 				</div>
 				</div>
+				
 				<!-- Delete Modal -->
 				<div class="modal fade" id="deleteModal{{$slider->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">

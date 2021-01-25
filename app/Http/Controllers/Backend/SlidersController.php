@@ -59,39 +59,52 @@ class SlidersController extends Controller
     public function update(Request $request, $id){
         
         $request->validate([
-            'name' => 'required',
+            'title' => 'required',
+            'image' => 'nullable|image',
             'priority' => 'required',
+            'button_link' => 'nullable|url',
         ],
 
         [
-            'name.required' => 'Please provide a division name',
-            'priority.required'=> 'Please provide a division priority',
+            'title.required' => 'Please provide slider title',
+            'priority.required' => 'Please provide slider priority',
+            'image.image' => 'Please provide a valid slider image',
+            'button_link.url' => 'Please provide a valid slider button link',
         ]);
 
-        $division = Division::find($id);
+        $slider = Slider::find($id);
+        $slider->title = $request->title;
+        $slider->button_text = $request->button_text;
+        $slider->button_link = $request->button_link;
+        $slider->priority = $request->priority;
+        if($request->image > 0){
+            //Delete the old slider
+            if(File::exists('images/sliders/'.$slider->image)){
+                File::delete('images/sliders/'.$slider->image);
+            }
+            $image = $request->file('image');
+            $img = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('images/sliders/'.$img);
+            Image::make($image)->save($location);
+            $slider->image = $img;            
+        }
 
-        $division->name = $request->name;
-        $division->priority = $request->priority;
-        $division->save();
-
-        session()->flash('success', 'A division has updated successfully !!');
-        return redirect()->route('admin.divisions');
+        $slider->save();
+        session()->flash('success', 'A Slider has updated successfully !!');
+        return redirect()->route('admin.sliders');
     }
 
     public function delete($id){
-
-        $division = Division::find($id);
-
-        if(!is_null($division)){
-            //Delete all the districs for this division
-            $districts = District::where('division_id', $division->id)->get();
-            foreach ($districts as $district) {
-                $district->delete();
+        $slider = Slider::find($id);
+        if(!is_null($slider)){
+            //Delete image
+            if(File::exists('images/sliders/'.$slider->image)){
+                File::delete('images/sliders/'.$slider->image);
             }
-            $division->delete();
+            $slider->delete();
         }
 
-        session()->flash('success', 'A division has deleted successfully !!');
+        session()->flash('success', 'A Slider has deleted successfully !!');
         return redirect()->back();
     }
 
