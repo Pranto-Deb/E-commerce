@@ -90,6 +90,8 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::post('/delete/{id}', 'Backend\OrdersController@delete')->name('admin.order.delete');
 		Route::post('/completed/{id}', 'Backend\OrdersController@completed')->name('admin.order.completed');
 		Route::post('/paid/{id}', 'Backend\OrdersController@paid')->name('admin.order.paid');
+		Route::post('/charge-update/{id}', 'Backend\OrdersController@chargeUpdate')->name('admin.order.charge');
+		Route::get('/invoice/{id}', 'Backend\OrdersController@generateInvoice')->name('admin.order.invoice');
 	});
 
 	//Category Route

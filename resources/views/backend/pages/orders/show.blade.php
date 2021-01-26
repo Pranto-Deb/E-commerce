@@ -92,6 +92,18 @@
 		</table>
 		@endif
 		<hr>
+		<form action="{{ route('admin.order.charge', $order->id) }}" method="post">
+		{{ csrf_field() }}
+		<label for="">Shipping Charge</label>
+		<input type="number" name="shipping_charge" id="shipping_charge" value="{{ $order->shipping_charge }}">
+		<br>
+		<label for="">Custom Discount</label>
+		<input type="number" name="custom_discount" id="custom_discount" value="{{ $order->custom_discount }}">
+		<br>
+		<input type="submit" value="Update" class="btn btn-success">
+		<a href="{{ route('admin.order.invoice', $order->id) }}" class="ml-2 btn btn-info">Generate Invoice</a>
+		</form>
+		<hr>
 		<form action="{{ route('admin.order.completed', $order->id) }}" method="post" style="display: inline-block!important;">
 		{{ csrf_field() }}
 		@if($order->is_completed)
