@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Notifications\VerifyRegistration;
 
 use App\Models\User;
+use App\Models\Cart;
 
 class LoginController extends Controller
 {
@@ -55,6 +56,12 @@ class LoginController extends Controller
             //Login this User
             if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
                 //log this user now
+                Cart::Where('ip_address', request()->ip())
+                    ->where('user_id',null)
+                    ->update([
+                        'user_id'=>auth()->id(),
+                    ]);
+
                 return redirect()->intended(route('index'));
             }
             else{

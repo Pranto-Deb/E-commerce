@@ -42,7 +42,7 @@
       <label for="name" class="col-md-4 col-form-label text-md-right">Receiver Name</label>
 
     	<div class="col-md-6">
-          <input id="name" type="text" class="form-control" name="name" value="{{ Auth::check() ? Auth::user()->first_name.' '.Auth::user()->last_name : ''}}" required autofocus>
+          <input id="name" type="text" class="form-control" name="name" value="{{ Auth::check() ? Auth::user()->first_name.' '.Auth::user()->last_name : old('name')}}" required autofocus>
 
           @if ($errors->has('name'))
               <span class="help-block">
@@ -55,7 +55,7 @@
   	<div class="form-group row{{ $errors->has('email') ? ' has-error' : '' }}">
       <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
       <div class="col-md-6">
-          <input id="email" type="email" class="form-control" name="email" value="{{ Auth::check() ? Auth::user()->email : ''}}" required>
+          <input id="email" type="email" class="form-control" name="email" value="{{ Auth::check() ? Auth::user()->email : old('email')}}" required>
 
           @if ($errors->has('email'))
               <span class="help-block">
@@ -68,7 +68,7 @@
       <label for="phone_no" class="col-md-4 col-form-label text-md-right">Phone No</label>
 
       <div class="col-md-6">
-          <input id="phone_no" type="text" class="form-control" name="phone_no" value="{{ Auth::check() ? Auth::user()->phone_no : ''}}" required>
+          <input id="phone_no" type="text" class="form-control" name="phone_no" value="{{ Auth::check() ? Auth::user()->phone_no : old('phone_no')}}" required>
 
           @if ($errors->has('phone_no'))
               <span class="help-block">
@@ -92,7 +92,7 @@
   <div class="form-group row{{ $errors->has('shipping_address') ? ' has-error' : '' }}">
       <label for="shipping_address" class="col-md-4 col-form-label text-md-right">Shipping Address(*)</label>
       <div class="col-md-6">
-          <textarea id="shipping_address" type="text" class="form-control" name="shipping_address" rows="4">{{ Auth::check() ? Auth::user()->shipping_address : ''}}</textarea>
+          <textarea id="shipping_address" type="text" class="form-control" name="shipping_address" required rows="4">{{ Auth::check() ? Auth::user()->shipping_address : old('shipping_address') }}</textarea>
 
           @if ($errors->has('shipping_address'))
               <span class="help-block">

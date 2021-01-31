@@ -9,7 +9,7 @@
 
 							@if($i > 0)
 							<a href="{!! route('products.show', $product->slug) !!}">
-							<img class="card-img-top feature-image" src="{{asset('images/products/'.$image->image)}}" alt="{{$product->title}}">
+							<img class="card-img-top feature-image" src="{{asset('images/products/'.$image->image)}}" alt="{{$product->title}}" height="100" width="100">
 							</a>
 							@endif
 
